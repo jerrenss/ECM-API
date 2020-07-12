@@ -6,7 +6,7 @@ const morgan = require('morgan')
 const expressValidator = require('express-validator')
 const dotenv = require('dotenv')
 dotenv.config()
-const userRoutes = require('./routes/user')
+const authRoutes = require('./routes/auth')
 
 // -----App Init-----
 const app = express()
@@ -33,7 +33,7 @@ app.use(cookieParser())
 app.use(expressValidator())
 
 // -----Route Handlers-----
-app.use('/api', userRoutes)
+app.use('/api', authRoutes)
 app.get('/', (req, res) => res.send('Hello World!'))
 
 // -----Server Handlers-----
