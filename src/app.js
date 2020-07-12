@@ -8,6 +8,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
+const categoryRoutes = require('./routes/category')
 
 // -----App Init-----
 const app = express()
@@ -37,6 +38,7 @@ app.use(expressValidator())
 app.get('/', (req, res) => res.send('Hello World!'))
 app.use('/api', authRoutes)
 app.use('/api', userRoutes)
+app.use('/api', categoryRoutes)
 
 // -----Server Handlers-----
 app.listen(port, () =>
