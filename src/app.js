@@ -7,6 +7,7 @@ const expressValidator = require('express-validator')
 const dotenv = require('dotenv')
 dotenv.config()
 const authRoutes = require('./routes/auth')
+const userRoutes = require('./routes/user')
 
 // -----App Init-----
 const app = express()
@@ -33,8 +34,9 @@ app.use(cookieParser())
 app.use(expressValidator())
 
 // -----Route Handlers-----
-app.use('/api', authRoutes)
 app.get('/', (req, res) => res.send('Hello World!'))
+app.use('/api', authRoutes)
+app.use('/api', userRoutes)
 
 // -----Server Handlers-----
 app.listen(port, () =>
