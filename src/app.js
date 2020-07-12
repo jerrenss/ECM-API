@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const expressValidator = require('express-validator')
+const cors = require('cors')
 const dotenv = require('dotenv')
 dotenv.config()
 const authRoutes = require('./routes/auth')
@@ -34,6 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(expressValidator())
+app.use(cors())
 
 // -----Route Handlers-----
 app.get('/', (req, res) => res.send('Hello World!'))
@@ -44,5 +46,5 @@ app.use('/api', productRoutes)
 
 // -----Server Handlers-----
 app.listen(port, () =>
-  console.log(`Express Server listening at http://localhost:${port}`),
+  console.log(`Express Server listening on http://localhost:${port}`),
 )
